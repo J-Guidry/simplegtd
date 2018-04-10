@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Getting Things Done</title>
+    
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="../datetimepicker/css/bootstrap-datetimepicker-standalone.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+
+</head>
+<body>
+    <div class="container">
+            <aside class="container instructions">
+                <ol>
+                    <li class="list-group-item list-group-item-primary">1. Capture your Tasks, Ideas, and Projects. Empty your Mind into the Inbox. </li>
+                    <li class="list-group-item list-group-item-primary">2. Clarify your Tasks. Can You Take Action on Them?</li>
+                    <li class="list-group-item list-group-item-primary">3. Process them into Groups</li>
+                </ol>
+            </aside>
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Inbox</a>
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Capture</a>
+                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Processing</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="add">
+                    <button id="addBtn" class="btn btn-primary">Add to Inbox</button>
+                    <input type="text" id="addToInbox" maxlength="26">
+                </div>
+                <ul id="inbox" class="list-group">
+
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+               <ul id="capture" class="list-group">
+
+               </ul>
+            </div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                <div class="row">
+                <section id="projectsSection" class="col-md">
+                    <h4 class= "projectsHeading">Projects</h4>
+                    <ul id="projects" class="list-group">
+
+                    </ul>
+                </section>
+
+                <section id="somedaySection" class="col-md">
+                    <h4 class="somedayHeading">Someday</h4>
+                    <ul id="someday" class="list-group">
+
+                        </ul>
+                </section>
+
+                <section id="nextActionsSection" class="col-md">
+                    <h4 class="nextActionsHeading">Next Actions</h4>
+                    <ul id="nextActions" class="list-group">
+
+                    </ul>
+                </section>
+            </div>
+
+                <section id="appointmentsSection">
+                    <h4 class="appointmentsHeading">Appointments</h4>
+                    <ul id="appointments" class="list-group">
+                        
+                    </ul>
+                </section>
+            </div>
+            
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../moment.js"></script>
+    <script type="text/javascript" src="../popper.min.js"></script>
+    <script type="text/javascript" src="../bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+  <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
