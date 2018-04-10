@@ -75,10 +75,7 @@ class ItemModel{
 
         if(index !== -1) {          
            listArr.splice(index, 1);
-           console.log("Delete from Storage Successful")
-        } else if(index === -1){
-            console.log("Delete Cancelled");
-        }
+        } 
         this.setItem(listArr);
     }
 
@@ -401,7 +398,7 @@ const UI = {
     
     toggleCompleted(id, completed, uncompleted){
         let item = document.getElementById(id);
-        console.log("class name: " + item.childNodes[0].childNodes[0].className);
+
         if(item.childNodes[0].childNodes[0].className === completed){
             item.replaceChild(this.createToggleIcon(false), item.childNodes[0]);
             item.classList.toggle("completed");
@@ -524,15 +521,14 @@ class ItemController{
 
             case "click":
                 if(DOMstring === DOM.inputBtn || DOMstring === DOM.toggleIcon || DOMstring === DOM.deleteIcon){
-                    //debugger;
                     document.querySelector(DOMstring).addEventListener(DOMevent, function(event){
                         if(event.target.id ==="addBtn"){
-                            //console.log(event.target.nextSibling.nextSibling);
+
                             ItemController.prototype.CtrlAddItem();
                         } else if(event.target.className === "toggle"){
                             ItemController.prototype.ToggleCompleted(event);
                         } else if(event.target.className === "deleteButton"){
-                            console.log("delete triggered inside");
+
                             ItemController.prototype.CtrlDeleteItem(event);
                          }  
                     });
@@ -553,7 +549,7 @@ class ItemController{
              if(DOMstring !== DOM.inputValue){
                 document.querySelector(DOMstring).addEventListener(DOMevent, function(event){
                     if(event.keyCode === 13 || event.which === 13){
-                        console.log("enter detected");
+
                         let itemId = event.target.parentNode.id;
                         event.preventDefault();
                         ItemModel.prototype.editItem(itemId,event.target.value);
@@ -582,14 +578,13 @@ class ItemController{
                 document.querySelector(DOMstring).addEventListener(DOMevent, function(event){
                     let name = event.target.className;
                     if(name === "itemText"){
-                       //event.preventDefault();
                        event.target.readOnly = false;
-                       //event.target.blur(); 
                     }         
                }, true);
              break;
         default: 
-               console.log("error");
+               //do nothing
+               break;
         }
     }
 
@@ -645,23 +640,19 @@ class ItemController{
     }
 
     ToggleCompleted(event){
-        //debugger;
         let idFromBtn = event.target.parentNode.parentNode.id;
-        console.log(idFromBtn);
-        //console.log(`id from svg: ${idFromSvg} id from path: ${idFromPath}`);
 
         const completed = "fa fa-check-circle-o fa-lg";
         const uncompleted = "fa fa-circle-o fa-lg";
 
         ItemModel.prototype.toggleCompleted(idFromBtn);
-        console.log(status);
+
         UI.toggleCompleted(idFromBtn, completed, uncompleted);
     }
 
     CtrlDeleteItem(event){
         let idFromBtn = event.target.parentNode.parentNode.id;
-        // let idFromPath  = event.target.parentNode.parentNode.parentNode.id;
-        //let idFromBtn = event.target.parentNode.id;       
+
         //delete from data
         ItemModel.prototype.deleteItem(idFromBtn); 
         
@@ -681,7 +672,6 @@ class ItemController{
     MakeActionable(event){
         event.stopPropagation();
         let item = event.target.parentNode.parentNode;
-        console.log("made actionable: " +  item);
         let itemId = event.target.parentNode.parentNode.id;
         let value = event.target.parentNode.previousSibling.value;
         let node =  document.querySelector(UI.DOMstrings.capturableList);
@@ -694,11 +684,8 @@ class ItemController{
         //event.stopPropagation();
         let itemId = event.target.parentNode.parentNode.id;
         let item = event.target.parentNode.parentNode.parentNode;
-        console.log(item);
 
-        console.log(event.target.className);
         if(event.target.className === "nextAction dropdown-item"){
-            console.log("ctrl next action");
             ItemModel.prototype.toggleNextAction(itemId);
             let node = document.querySelector(UI.DOMstrings.nextActionsList);
             UI.sendToTab(item, node);
@@ -723,7 +710,6 @@ class ItemController{
 
     StoreAppointments(event){
         event.stopPropagation();
-        console.log(event.target.value);
         let appointment = event.target.value;
         let id = event.target.parentNode.parentNode.id;
         ItemModel.prototype.storeAppointment(appointment, id);
@@ -732,7 +718,6 @@ class ItemController{
     static init(){
         if(localStorage.list == undefined){
             ItemModel.createStorage();
-            console.log("created storage");
         }
         const ctrl = new ItemController();
         ctrl.CheckForListItems();
