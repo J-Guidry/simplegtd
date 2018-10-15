@@ -1,15 +1,24 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import url('~font-awesome/css/font-awesome.min.css');
+@import '~pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.min.css';
+
+// @import '~pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker-standalone.css';
+
+
 .container{
     text-align: center;
 }
 
 .instructions{
     text-align: left;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .time{
-    float: right;
+    margin-left: 10px;
+    margin-right: 10px;
 }
-
 
 .deleteButton{
     float: right;
@@ -31,10 +40,6 @@ li{
 .dropdown{
     display: inline-block;
 }
-
-/* .btn {
-    display: inline-block;
-} */
 
 .itemText{
     cursor: default;
@@ -72,7 +77,7 @@ li{
 }
 
 
-.glyphicon-calendar{
+.fa-calendar{
     margin: 0 10px;
 }
 
@@ -101,21 +106,6 @@ li{
     line-height: 1;
 }
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-/* .show {display:block;} */
-/* 
-#projectsSection{
-    display:inline-block;
-    width: 30%;
-}
-#somedaySection{
-    display: inline-block;
-    width: 30%;
-}
 
-#nextActionsSection{
-    display: inline-block;
-    width: 30%;
-} */
 
 

@@ -1,0 +1,44 @@
+{
+  "name": "simpleGTD",
+  "version": "1.0.0",
+  "description": "This is a simple productivity app that based on the Getting Things Done productivity method.",
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "bootstrap4-datetimepicker": "^5.2.3",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
+    "moment": "^2.22.0",
+    "moment-timezone": "^0.4.1",
+    "pc-bootstrap4-datetimepicker": "^4.17.50",
+    "popper.js": "1.12.9",
+    "tether": "^1.4.3"
+  },
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.4",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  },
+  "scripts": {
+    "develop": "webpack-dev-server --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/J-Guidry/simplegtd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/J-Guidry/simplegtd/issues"
+  },
+  "homepage": "https://github.com/J-Guidry/simplegtd#readme"
+}

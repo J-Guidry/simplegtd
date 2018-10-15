@@ -1,3 +1,26 @@
+import moment from "moment";
+import jQuery from "jquery";
+window.$ = window.jQuery = jQuery;
+import "popper.js";
+import "bootstrap";
+import "pc-bootstrap4-datetimepicker";
+import "./index.scss";
+
+console.log($);
+$.extend(true, $.fn.datetimepicker.defaults, {
+    icons: {
+      time: 'fa fa-clock-o',
+      date: 'fa fa-calendar',
+      up: 'fa fa-arrow-up',
+      down: 'fa fa-arrow-down',
+      previous: 'fa fa-chevron-left',
+      next: 'fa fa-chevron-right',
+      today: 'fa fa-calendar-check-o',
+      clear: 'fa fa-trash',
+      close: 'fa fa-times-circle'
+    }
+  });
+  
 class ItemModel{
     constructor(id,value, dateCreated, timeCreated, appointment){
         this.id = id;
@@ -228,6 +251,7 @@ const UI = {
             listItemInput.className = "itemText";
             listItemInput.readOnly = true;
             listItemInput.value = value;
+            listItemInput.size = 35;
             li.appendChild(this.createToggleIcon(false));
             li.appendChild(listItemInput);
             li.appendChild(this.createCheckbox());
@@ -250,6 +274,7 @@ const UI = {
                 let itemLi = document.createElement("li");
                 itemLi.className = "list-group-item";
                 itemLi.id = item.id;   
+                //itemLi.style.width = "450px";
                 let date = document.createElement("span");
                 date.className = "time";
                 let textnode = document.createTextNode(item.dateCreated + " " + item.timeCreated); 
@@ -259,6 +284,7 @@ const UI = {
                 listItemInput.className = "itemText";
                 listItemInput.readOnly = true;
                 listItemInput.value = item.value;
+                listItemInput.size = 30;
                 
                 itemLi.appendChild(this.createToggleIcon(item.completed));
                 if(item.completed === true){
@@ -270,18 +296,22 @@ const UI = {
                     itemLi.appendChild(this.createCheckbox());
                 }
     
-                itemLi.appendChild(this.createDeleteIcon(item.id));
+                
                 itemLi.appendChild(date);
+                itemLi.appendChild(this.createDeleteIcon(item.id));
                 if(item.inbox === true){
                     inbox.appendChild(itemLi);
                 } else if(item.actionable === true){
                     capture.appendChild(itemLi);
                     itemLi.appendChild(this.createDropDownsForProcessing(item.id));
                 } else if(item.nextAction === true){
+                    itemLi.style.width = "370px";
                     nextActions.appendChild(itemLi);
                 } else if(item.projects === true){
+                    itemLi.style.width = "370px";
                     projects.appendChild(itemLi);
                 } else if(item.someday === true){
+                    itemLi.style.width = "370px";
                     someday.appendChild(itemLi);
                 } else if(item.appointments === true){
                     appointments.appendChild(itemLi);  
@@ -415,6 +445,7 @@ const UI = {
     sendToTab: function(item, Tab){
         Tab.appendChild(item);
         item.removeChild(item.childNodes[4]);
+
         },
     sendToAppointments: function(item, appointmentsTab, dateTimePicker){
         appointmentsTab.appendChild(item);
@@ -443,7 +474,7 @@ const UI = {
         input.id = `${id}DTInput`;
         input.className = "datetime";
         iconCover.className = "input-group-addon";
-        icon.className = "glyphicon glyphicon-calendar";
+        icon.className = "fa fa-calendar";
         iconCover.appendChild(icon);
         dateTimePicker.appendChild(input);
         dateTimePicker.appendChild(iconCover);
@@ -684,7 +715,7 @@ class ItemController{
         //event.stopPropagation();
         let itemId = event.target.parentNode.parentNode.id;
         let item = event.target.parentNode.parentNode.parentNode;
-
+        
         if(event.target.className === "nextAction dropdown-item"){
             ItemModel.prototype.toggleNextAction(itemId);
             let node = document.querySelector(UI.DOMstrings.nextActionsList);
